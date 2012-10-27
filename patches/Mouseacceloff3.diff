@@ -1,0 +1,4 @@
+0c0
+< bEnableMouseSmoothing=true
+---
+> bEnableMouseSmoothing=false

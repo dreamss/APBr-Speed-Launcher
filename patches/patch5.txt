@@ -1,0 +1,4 @@
+167c167
+< MinSmoothedFrameRate=22
+---
+> MinSmoothedFrameRate=70

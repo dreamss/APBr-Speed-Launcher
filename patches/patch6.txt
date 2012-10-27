@@ -1,0 +1,4 @@
+168c168
+< MaxSmoothedFrameRate=62
+---
+> MaxSmoothedFrameRate=120

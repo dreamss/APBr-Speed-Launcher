@@ -1,0 +1,4 @@
+348c348
+< MinDesiredFrameRate=35.000000
+---
+> MinDesiredFrameRate=62.000000

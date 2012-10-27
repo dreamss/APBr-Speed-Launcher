@@ -1,0 +1,2 @@
+Reversed (or previously applied) patch detected!  Skipping patch.
+1 out of 1 hunk ignored -- saving rejects to file log\/rej

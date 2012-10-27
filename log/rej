@@ -1,0 +1,5 @@
+***************
+*** 0
+- Bindings=(Name="Sprint",Command="InputSprinting | OnRelease InputStopSprinting")
+--- 0 -----
++ Bindings=(Name="Sprint",Command="InputstopSprinting | OnRelease InputSprinting")

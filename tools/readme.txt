@@ -1,0 +1,1 @@
+Compile with ahk L 64bit. exe size has to be 1mb+

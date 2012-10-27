@@ -1,0 +1,4 @@
+166c166
+< bSmoothFrameRate=TRUE
+---
+> bSmoothFrameRate=FALSE

@@ -1,0 +1,20 @@
+580c580
+< FogVolumes=True
+---
+> FogVolumes=False
+720c720
+< FogVolumes=True
+---
+> FogVolumes=False
+870c870
+< FogVolumes=True
+---
+> FogVolumes=False
+1010c1010
+< FogVolumes=True
+---
+> FogVolumes=False
+1150c1150
+< FogVolumes=True
+---
+> FogVolumes=False

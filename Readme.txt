@@ -1,0 +1,1 @@
+Just open settings.ini and change the APBPATH.
