@@ -23,7 +23,7 @@ GOTO EXIT
 :DREAMSSAREA
 echo Setting up dreamss custom settings..
 set MAKEREADONLY=1
-set COPYCONFIGFILES=0
+set COPYCONFIGFILES=1
 set DISABLEALTTAB=1
 set SETAFFINITY=1
 set AFFINITYBIT=55
@@ -31,6 +31,7 @@ set DELAYWAITTIMER=30000
 set APBPATH=d:\apb
 set CHANGEAPBVOLUME=1
 set APBVOLUMELEVEL=0.2
+set PATCHCONFIGFILES=1
 GOTO RENTRASH
  
 :DISABLEALTTAB
@@ -87,6 +88,7 @@ IF "X%DISABLEALTTAB%"=="X1" GOTO DISABLEALTTAB
 GOTO EXIT
 
 :PATCHCONFIGS
+IF NOT "X%PATCHCONFIGFILES%"=="X1" goto RUNAPB
 echo Patching Config files...
 attrib  -r "%APBPATH%\Engine\Config\BaseEngine.ini" 
 attrib  -r "%APBPATH%\APBGame\Config\APBEngine.ini"
@@ -122,8 +124,8 @@ patch --no-backup-if-mismatch -f -s -t -N --reject-file="%LOGFOLDER%/rej" "%APBP
 patch --no-backup-if-mismatch -f -s -t -N --reject-file="%LOGFOLDER%/rej" "%APBPATH%\APBGame\Config\DefaultInput.ini" %PATCHFOLDER%%PATCHFILE12%  >>%LOGFOLDER%/patch.log
 patch --no-backup-if-mismatch -f -s -t -N --reject-file="%LOGFOLDER%/rej" "%APBPATH%\APBGame\Config\APBInput.ini" %PATCHFOLDER%%PATCHFILE11%  >>%LOGFOLDER%/patch.log
 
-echo Copying config files from configs\* to %APBPATH%\apbgame\config\
-copy configs\*  %APBPATH%\apbgame\config\ /y
+IF "X%COPYCONFIGFILES%"=="X1"  echo Copying config files from configs\* to %APBPATH%\apbgame\config\
+IF "X%COPYCONFIGFILES%"=="X1" copy configs\*  %APBPATH%\apbgame\config\ /y
 IF "X%MAKEREADONLY%"=="X1" GOTO MAKEREADONLY
 goto RUNAPB
 GOTO EXIT
