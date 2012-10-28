@@ -29,12 +29,14 @@ set SETAFFINITY=1
 set AFFINITYBIT=55
 set DELAYWAITTIMER=30000
 set APBPATH=d:\apb
+set CHANGEAPBVOLUME=1
+set APBVOLUMELEVEL=0.2
 GOTO RENTRASH
  
 :DISABLEALTTAB
-cls
-echo WAITING  %DELAYWAITTIMER%ms then DISABLING ALT TAB!
-PING 1.1.1.1 -n 1 -w %DELAYWAITTIMER% >NUL
+IF "X%CHANGEAPBVOLUME%"=="X1" echo Already waited %DELAYWAITTIMER%ms, Just gonna disable the alttab!
+IF NOT "X%CHANGEAPBVOLUME%"=="X1" echo Waiting %DELAYWAITTIMER%ms then disabling the alttab!
+IF NOT "X%CHANGEAPBVOLUME%"=="X1" PING 1.1.1.1 -n 1 -w %DELAYWAITTIMER% >NUL
  tools\disablealttab.bat
 GOTO EXIT
 
@@ -58,16 +60,29 @@ echo.
 pause
 GOTO EXIT
 
+:CHANGEVOLUME
+echo Waiting %DELAYWAITTIMER%ms then going to change the volume.
+PING 1.1.1.1 -n 1 -w %DELAYWAITTIMER% >NUL
+for /f "TOKENS=1" %%c in ('wmic PROCESS where "Name='apb.exe'" get ProcessID ^| findstr [0-9]') do (
+echo Found APB pid: %%c, setting volume to %APBVOLUMELEVEL%
+tools\nircmd.exe setappvolume /%%c %APBVOLUMELEVEL%
+)
+IF "X%DISABLEALTTAB%"=="X1" GOTO DISABLEALTTAB
+GOTO EXIT
+
+
 :RUNAPB
 IF "X%SETAFFINITY%"=="X1" GOTO RUNAPBAFFINITY
 echo Starting APBr!
 start /d  "%APBPATH%\Binaries\" Apb.exe 
+IF "X%CHANGEAPBVOLUME%"=="X1" GOTO CHANGEVOLUME
 IF "X%DISABLEALTTAB%"=="X1" GOTO DISABLEALTTAB
 GOTO EXIT
 
 :RUNAPBAFFINITY
 echo Starting APBr and settin affinty to %AFFINITYBIT%!
 start /affinity %AFFINITYBIT% /d   "%APBPATH%\Binaries\" Apb.exe  
+IF "X%CHANGEAPBVOLUME%"=="X1" GOTO CHANGEVOLUME
 IF "X%DISABLEALTTAB%"=="X1" GOTO DISABLEALTTAB
 GOTO EXIT
 
