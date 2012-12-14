@@ -22,12 +22,12 @@ GOTO EXIT
 
 :DREAMSSAREA
 echo Setting up dreamss custom settings..
-set MAKEREADONLY=1
+set MAKEREADONLY=0
 set COPYCONFIGFILES=1
 set DISABLEALTTAB=1
 set SETAFFINITY=1
 set AFFINITYBIT=55
-set DELAYWAITTIMER=30000
+set DELAYWAITTIMER=40000
 set APBPATH=d:\apb
 set CHANGEAPBVOLUME=1
 set APBVOLUMELEVEL=0.2
@@ -116,13 +116,15 @@ patch --no-backup-if-mismatch -f -s -t -N --reject-file="%LOGFOLDER%/rej" "%APBP
 patch --no-backup-if-mismatch -f -s -t -N --reject-file="%LOGFOLDER%/rej" "%APBPATH%\Engine\Config\BaseInput.ini" %PATCHFOLDER%%PATCHFILE8%  >>%LOGFOLDER%/patch.log
 patch --no-backup-if-mismatch -f -s -t -N --reject-file="%LOGFOLDER%/rej" "%APBPATH%\Engine\Config\BaseInput.ini" %PATCHFOLDER%%PATCHFILE9%  >>%LOGFOLDER%/patch.log
 patch --no-backup-if-mismatch -f -s -t -N --reject-file="%LOGFOLDER%/rej" "%APBPATH%\Engine\Config\BaseInput.ini" %PATCHFOLDER%%PATCHFILE10%  >>%LOGFOLDER%/patch.log
+patch --no-backup-if-mismatch -f -s -t -N --reject-file="%LOGFOLDER%/rej" "%APBPATH%\Engine\Config\BaseInput.ini" %PATCHFOLDER%%PATCHFILE11%  >>%LOGFOLDER%/patch.log
+patch --no-backup-if-mismatch -f -s -t -N --reject-file="%LOGFOLDER%/rej" "%APBPATH%\Engine\Config\BaseInput.ini" %PATCHFOLDER%%PATCHFILE12%  >>%LOGFOLDER%/patch.log
 patch --no-backup-if-mismatch -f -s -t -N --reject-file="%LOGFOLDER%/rej" "%APBPATH%\APBGame\Config\APBInput.ini" %PATCHFOLDER%%PATCHFILE8%  >>%LOGFOLDER%/patch.log
 patch --no-backup-if-mismatch -f -s -t -N --reject-file="%LOGFOLDER%/rej" "%APBPATH%\APBGame\Config\APBInput.ini" %PATCHFOLDER%%PATCHFILE9%  >>%LOGFOLDER%/patch.log
 patch --no-backup-if-mismatch -f -s -t -N --reject-file="%LOGFOLDER%/rej" "%APBPATH%\APBGame\Config\APBInput.ini" %PATCHFOLDER%%PATCHFILE10%  >>%LOGFOLDER%/patch.log
-
-
-patch --no-backup-if-mismatch -f -s -t -N --reject-file="%LOGFOLDER%/rej" "%APBPATH%\APBGame\Config\DefaultInput.ini" %PATCHFOLDER%%PATCHFILE12%  >>%LOGFOLDER%/patch.log
 patch --no-backup-if-mismatch -f -s -t -N --reject-file="%LOGFOLDER%/rej" "%APBPATH%\APBGame\Config\APBInput.ini" %PATCHFOLDER%%PATCHFILE11%  >>%LOGFOLDER%/patch.log
+patch --no-backup-if-mismatch -f -s -t -N --reject-file="%LOGFOLDER%/rej" "%APBPATH%\APBGame\Config\APBInput.ini" %PATCHFOLDER%%PATCHFILE12%  >>%LOGFOLDER%/patch.log
+ 
+
 
 IF "X%COPYCONFIGFILES%"=="X1"  echo Copying config files from configs\* to %APBPATH%\apbgame\config\
 IF "X%COPYCONFIGFILES%"=="X1" copy configs\*  %APBPATH%\apbgame\config\ /y

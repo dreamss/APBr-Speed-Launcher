@@ -1,0 +1,5 @@
+0c23,24
+< Bindings=(Name="LookUp",Command="Axis aLookUp Speed=+25.0 AbsoluteAxis=100")
+---
+> Bindings=(Name="LookUp",Command="Axis aLookUp Speed=+25.0 AbsoluteAxis=0")
+> Bindings=(Name="GBA_TurnLeft",Command="Axis aBaseX Speed=-40.0 AbsoluteAxis=0")
