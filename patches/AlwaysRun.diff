@@ -1,4 +1,4 @@
 0c0
 < Bindings=(Name="Sprint",Command="InputSprinting | OnRelease InputStopSprinting")
 ---
-> Bindings=(Name="Sprint",Command="InputstopSprinting | OnRelease InputSprinting")
+> Bindings=(Name="Sprint",Command="InputStopSprinting | OnRelease InputSprinting")
