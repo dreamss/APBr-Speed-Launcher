@@ -2,8 +2,8 @@
 < MinSmoothedFrameRate=22
 < MaxSmoothedFrameRate=62
 ---
-> MinSmoothedFrameRate=70
-> MaxSmoothedFrameRate=120
+> MinSmoothedFrameRate=120
+> MaxSmoothedFrameRate=130
 348c348
 < MinDesiredFrameRate=35.000000
 ---
