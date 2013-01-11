@@ -12,7 +12,7 @@ set LOGFOLDER=log\
 
 ECHO KILLING VIVOX!
 TASKKILL /F /IM VivoxVoiceService.exe
-IF EXIST "C:\Users\dreamss"  set APBPATH=d:\apb
+IF EXIST "C:\Users\dreamss"  set APBPATH=d:\games\apb
 IF NOT EXIST "%APBPATH%\Binaries\Apb.exe" GOTO NOAPBDIR
 IF EXIST "C:\Users\dreamss" GOTO DREAMSSAREA
 
@@ -28,7 +28,7 @@ set DISABLEALTTAB=1
 set SETAFFINITY=1
 set AFFINITYBIT=55
 set DELAYWAITTIMER=40000
-set APBPATH=d:\apb
+set APBPATH=d:\games\apb
 set CHANGEAPBVOLUME=1
 set APBVOLUMELEVEL=0.2
 set PATCHCONFIGFILES=1
@@ -42,14 +42,7 @@ IF NOT "X%CHANGEAPBVOLUME%"=="X1" PING 1.1.1.1 -n 1 -w %DELAYWAITTIMER% >NUL
 GOTO EXIT
 
 :RENTRASH
-echo Deleting movies..
-
-
-IF EXIST "%APBPATH%\APBGame\Movies\SplashScreen.bik" echo.  > "%APBPATH%\APBGame\Movies\SplashScreen.bik"
-IF EXIST "%APBPATH%\APBGame\Movies\IntroTitles.bik" echo.  > "%APBPATH%\APBGame\Movies\IntroTitles.bik"
-IF EXIST "%APBPATH%\APBGame\Movies\EnfTutorial.bik" echo.  > "%APBPATH%\APBGame\Movies\EnfTutorial.bik"
-IF EXIST "%APBPATH%\APBGame\Movies\CrimTutorial.bik" echo.  > "%APBPATH%\APBGame\Movies\CrimTutorial.bik"
-IF EXIST "%APBPATH%\APBGame\Movies\APBFirstSpawnTutorial.bik" echo.  > "%APBPATH%\APBGame\Movies\APBFirstSpawnTutorial.bik"
+ 
 
 goto PATCHCONFIGS
 
@@ -75,14 +68,14 @@ GOTO EXIT
 :RUNAPB
 IF "X%SETAFFINITY%"=="X1" GOTO RUNAPBAFFINITY
 echo Starting APBr!
-start /d  "%APBPATH%\Binaries\" Apb.exe 
+start /d  "%APBPATH%\Binaries\" Apb.exe -nomoviestartup
 IF "X%CHANGEAPBVOLUME%"=="X1" GOTO CHANGEVOLUME
 IF "X%DISABLEALTTAB%"=="X1" GOTO DISABLEALTTAB
 GOTO EXIT
 
 :RUNAPBAFFINITY
 echo Starting APBr and settin affinty to %AFFINITYBIT%!
-start /affinity %AFFINITYBIT% /d   "%APBPATH%\Binaries\" Apb.exe  
+start /affinity %AFFINITYBIT% /d   "%APBPATH%\Binaries\" Apb.exe  -nomoviestartup
 IF "X%CHANGEAPBVOLUME%"=="X1" GOTO CHANGEVOLUME
 IF "X%DISABLEALTTAB%"=="X1" GOTO DISABLEALTTAB
 GOTO EXIT
